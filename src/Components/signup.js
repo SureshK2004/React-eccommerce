@@ -2,7 +2,7 @@ function Signup() {
     return (
         <>
 
-            <button type="button" className="btn btn-dark m-2">SignUp</button>
+            <button type="button" className="btn btn-danger m-2">SignUp</button>
 
         </>
     );

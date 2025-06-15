@@ -1,15 +1,12 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "./Components/header";
-import Homesection from "./Components/section";
-import Footer from "./Components/footer";
+import Layouts from "./Components/layout";
+
 
 function App() {
   return (
     <div>
-      <Header />
-      <Homesection/>
-      <Footer />
+      <Layouts />
     </div>
   );
 }
