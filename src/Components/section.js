@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./section.css"
+import electronicsImg from "./asserts/electronics.jpg";
+import jewelryImg from "./asserts/jw.jpg";
+import mensClothingImg from "./asserts/mens clothing.jpg";
+import womensClothingImg from "./asserts/women.jpg";
 
 function Homesection() {
   const [category, setCategory] = useState([]);
+
+   const categoryImages = {
+    "electronics": electronicsImg,
+    "jewelery": jewelryImg,
+    "men's clothing": mensClothingImg,
+    "women's clothing": womensClothingImg
+  };
+
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/categories")
@@ -16,6 +28,12 @@ function Homesection() {
         {category.map((data) => (
           <div className="col-md-3 mb-4">
             <div className="card h-100 text-center p-3 category-card">
+               <img 
+                src={categoryImages[data]} 
+                alt={data}
+                className="card-img-top img-fluid mb-3"
+                style={{ height: "180px", objectFit: "contain" }}
+              />
               <h5 className="card-title text-capitalize">{data}</h5>
             </div>
           </div>
