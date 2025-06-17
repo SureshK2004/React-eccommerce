@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import MainNavbar from './main';
 
 export default function Electronics() {
     const [category, setCategory] = useState([]);
@@ -24,11 +25,13 @@ export default function Electronics() {
     }
 
     return (
+        <>
+        <MainNavbar />
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "8vh" }}>
             <div className="row m-5 w-100">
                 {category.map((data) => (
                     <div key={data.id} className="col-md-3 mb-4">
-                        <div className="card h-100 text-center p-3 category-card">
+                        <div className="card h-100 text-center p-3  category-card">
                             <img
                                 src={data.image}
                                 alt={data.title}
@@ -45,5 +48,7 @@ export default function Electronics() {
                 ))}
             </div>
         </div>
+        </>
+
     );
 }

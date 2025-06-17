@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import MainNavbar from './main';
+
 
 export default function Jewellery() {
     const [category, setCategory] = useState([]);
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products/category/jewelery")
             .then((res) => res.json())
             .then((json) => {
                 setCategory(json);
-                setLoading(false); 
+                setLoading(false);
             });
     }, []);
 
@@ -24,6 +26,10 @@ export default function Jewellery() {
     }
 
     return (
+        <>
+        <div>
+            <MainNavbar />
+        </div>
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "8vh" }}>
             <div className="row m-5 w-100">
                 {category.map((data) => (
@@ -43,7 +49,9 @@ export default function Jewellery() {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div>  
         </div>
+        </>
     );
+   
 }
