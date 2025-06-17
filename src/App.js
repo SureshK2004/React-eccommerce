@@ -1,13 +1,14 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Layouts from "./Components/layout";
+import Routeapp from "./Components/router";
+
 
 
 function App() {
   return (
-    <div>
-      <Layouts />
-    </div>
+    
+      <Routeapp/>
+    
   );
 }
 
