@@ -16,7 +16,7 @@ export default function Womensclothing() {
 
     if (loading) {
         return (
-            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "8vh" }}>
+            <div className="d-flex justify-content-center align-items-center mt-4" style={{ minHeight: "8vh" }}>
                 <div className="spinner-border text-primary" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>
@@ -39,10 +39,8 @@ export default function Womensclothing() {
                                 style={{ height: "180px", objectFit: "contain" }}
                             />
                             <h5 className="card-title text-capitalize">{data.title}</h5>
-                            <p className="card-text">{data.price}</p>
-                            <p className="card-text">{data.category}</p>
-                            <p className="card-text" style={{ fontSize: "12px" }}>{data.description}...</p>
-                            <p className="card-text">Rating: {data.rating.rate} ({data.rating.count})</p>
+                            <p className="card-text">₹{data.price}</p>
+                           
                         </div>
                     </div>
                 ))}

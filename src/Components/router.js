@@ -5,6 +5,7 @@ import Electronics from "./electronics";
 import Jewellery from "./jewellery";
 import Menclothing from "./mensclothing";
 import Womensclothing from "./womenclothing";
+import ProductDetails from "./productdetails";
 
 
 function Routeapp() {
@@ -18,12 +19,12 @@ function Routeapp() {
                         <Route path="jewelery" element={<Jewellery />} />
                         <Route path="men's clothing" element={<Menclothing />} />
                         <Route path="women's clothing" element={<Womensclothing />} />
-                       
-                        
+                    
 
+                    <Route path="/product/:id" element={<ProductDetails />} />
                     </Route>
                 </Routes>
-            </BrowserRouter >
+        </BrowserRouter >
         </>
     );
 }

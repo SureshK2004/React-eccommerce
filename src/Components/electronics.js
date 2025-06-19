@@ -1,54 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import MainNavbar from './main';
+import React, { useEffect, useState } from "react";
+import MainNavbar from "./main";
+import { useNavigate } from "react-router-dom";
 
-export default function Electronics() {
-    const [category, setCategory] = useState([]);
-    const [loading, setLoading] = useState(true); // Added loading state
+function Electronics() {
+  const [category, setCategory] = useState([]);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products/category/electronics")
-            .then((res) => res.json())
-            .then((json) => {
-                setCategory(json);
-                setLoading(false); // Set loading to false when data arrives
-            });
-    }, []);
 
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "8vh" }}>
-                <div className="spinner-border text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/category/electronics")
+      .then((res) => res.json())
+      .then((json) => setCategory(json))
+  }, []);
+   
+
+  const getIdData = (a) => {
+    navigate(`/product/${a}`);
+  }
+
+  
+
+
+ return (
+  <>
+  <MainNavbar/>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh"}}>
+      <div className="row m-5 w-100">
+        {category.map((data) => (
+          <div className="col-md-3 mb-4" onClick={() => getIdData(data.id)}>
+            <div className="card h-100 text-center p-3 category-card">
+              <img
+              src={data.image}
+              alt={data.title}
+              className="img-fuild mx-auto"
+              style={{ maxHeight:"350px",maxWidth:"200px" ,objectFit:"contain"}}
+              />
+              <div><strong>Product ID:</strong>{data.id}</div>
+              <div><strong>Prduct price:</strong>{data.price}</div>
+     
+              <h5  className="card-title text-capitalize">{}</h5>
+         
             </div>
-        );
-    }
-
-    return (
-        <>
-        <MainNavbar />
-        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "8vh" }}>
-            <div className="row m-5 w-100">
-                {category.map((data) => (
-                    <div key={data.id} className="col-md-3 mb-4">
-                        <div className="card h-100 text-center p-3  category-card">
-                            <img
-                                src={data.image}
-                                alt={data.title}
-                                className="card-img-top img-fluid mb-3"
-                                style={{ height: "180px", objectFit: "contain" }}
-                            />
-                            <h5 className="card-title text-capitalize">{data.title}</h5>
-                            <p className="card-text">{data.price}</p>
-                            <p className="card-text">{data.category}</p>
-                            <p className="card-text" style={{ fontSize: "12px" }}>{data.description}...</p>
-                            <p className="card-text">Rating: {data.rating.rate} ({data.rating.count})</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-        </>
-
-    );
+          </div>  
+        ))}
+      </div>
+    </div>
+    </>
+  );
 }
+
+export default Electronics;

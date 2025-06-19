@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import MainNavbar from "./main";
+
+function ProductDetails() {
+  const [category, setCategory] = useState({});
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (!id) return;
+
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => setCategory(data))
+      .catch((err) => {
+        console.error("Fetch error:", err);
+      });
+  }, [id]);
+
+
+  return (
+    <>
+      <MainNavbar />
+      <div
+        className="d-flex justify-content-center align-items-center section"
+        style={{ minHeight: "80vh" }}
+      >
+        <div className="row m-5 w-100">
+          <div className="col-md-3 mb-4">
+            <div className="card h-100 text-center p-3 category-card">
+              <img
+                src={category.image}
+                alt={category.title}
+                className="img-fluid mx-auto"
+                style={{
+                  maxHeight: "350px",
+                  maxWidth: "200px",
+                  objectFit: "contain",
+                }}
+              />
+              <div>
+                <strong>Categories:</strong> {category.category}
+              </div>
+              <div>
+                <strong>Description:</strong> {category.description}
+              </div>
+              <div>
+                <strong>Price:</strong> ${category.price}
+              </div>
+              <h5 className="card-title text-capitalize">{category.title}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default ProductDetails;
