@@ -28,11 +28,11 @@ function ProductDetails() {
       <MainNavbar />
       <div
         className="d-flex justify-content-center align-items-center section"
-        style={{ minHeight: "80vh" }}
+        style={{ minHeight: "80vh" ,lineHeight: '25px' }}
       >
         <div className="row m-5 w-100">
           <div className="col-md-3 mb-4">
-            <div className="card h-100 text-center p-3 category-card">
+            <div className="card h-100 text-center p-3 category-card ">
               <img
                 src={category.image}
                 alt={category.title}
@@ -43,16 +43,28 @@ function ProductDetails() {
                   objectFit: "contain",
                 }}
               />
-              <div>
+              <div className="m-2">
                 <strong>Categories:</strong> {category.category}
               </div>
               <div>
                 <strong>Description:</strong> {category.description}
               </div>
-              <div>
-                <strong>Price:</strong> ${category.price}
+              <div className="m-2">
+                <strong>Price:</strong> ₹{category.price}
               </div>
               <h5 className="card-title text-capitalize">{category.title}</h5>
+
+              <div
+                className="d-flex justify-content-center align-items-center mt-3 mb-1"
+              >
+                <button
+                  className="btn btn-danger"
+                  style={{ width: "180px" }}
+                >
+                  Buy Now
+                </button>
+              </div>
+
             </div>
           </div>
         </div>
