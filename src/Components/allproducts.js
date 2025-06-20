@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MainNavbar from "./main"; // or whatever your navbar is
 import { useNavigate } from "react-router-dom";
 
 function AllProducts() {
@@ -10,38 +9,57 @@ function AllProducts() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
-      .catch((err) => console.error("Fetch failed:", err));
   }, []);
 
-   const goToDetails= (a) => {
-    navigate(`/product/${a}`);
-  }
+  const goToDetails = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <>
-      <MainNavbar />
-      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
-        <div className="row m-5 w-100">
-          {products.map((product) => (
-            <div
-              className="col-md-3 mb-4"
-              key={product.id}
-              onClick={() => goToDetails(product.id)}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="card h-100 text-center p-3 category-card">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="img-fluid mx-auto"
-                  style={{ maxHeight: "350px", maxWidth: "200px", objectFit: "contain" }}
-                />
-                <div><strong>ID:</strong> {product.id}</div>
-                <div><strong>Price:</strong> ${product.price}</div>
-                <h5 className="card-title text-capitalize">{product.title}</h5>
-              </div>
-            </div>
-          ))}
+      <div className="container mt-5">
+        <h3 className="text-center mb-4">All Products</h3>
+        <div className="table-responsive">
+          <table className="table table-striped table-bordered text-center align-middle">
+            <thead className="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Edit the product</th>
+                <th>Delete the product</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr
+                  key={product.id}
+                  onClick={() => goToDetails(product.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <td>{product.id}</td>
+                  <td>
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      style={{ height: "60px", objectFit: "contain" }}
+                    />
+                  </td>
+                  <td>{product.title}</td>
+                  <td>{product.category}</td>
+                  <td>${product.price}</td>
+                  <td>
+                    <button className="btn btn-warning">Edit</button>
+                  </td>
+                  <td>
+                    <button className="btn btn-dark mt-1">Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

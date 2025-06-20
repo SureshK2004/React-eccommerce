@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MainNavbar from "./main";
+
+
 
 function ProductDetails() {
   const [category, setCategory] = useState({});
@@ -25,46 +26,48 @@ function ProductDetails() {
 
   return (
     <>
-      <MainNavbar />
+    
       <div
         className="d-flex justify-content-center align-items-center section"
-        style={{ minHeight: "80vh" ,lineHeight: '25px' }}
+        style={{ minHeight: "80vh" }}
       >
-        <div className="row m-5 w-100">
-          <div className="col-md-3 mb-4">
-            <div className="card h-100 text-center p-3 category-card ">
-              <img
-                src={category.image}
-                alt={category.title}
-                className="img-fluid mx-auto"
-                style={{
-                  maxHeight: "350px",
-                  maxWidth: "200px",
-                  objectFit: "contain",
-                }}
-              />
-              <div className="m-2">
-                <strong>Categories:</strong> {category.category}
-              </div>
-              <div>
-                <strong>Description:</strong> {category.description}
-              </div>
-              <div className="m-2">
-                <strong>Price:</strong> ₹{category.price}
-              </div>
-              <h5 className="card-title text-capitalize">{category.title}</h5>
+        <div className="container">
+          <div className="row m-5 justify-content-center align-items-center ">
+            <div className="col-md-5 mb-5">
+              <div className="card w-100 text-center p-3 category-card ">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="img-fluid mx-auto"
+                  style={{
+                    maxHeight: "350px",
+                    maxWidth: "200px",
+                    objectFit: "contain",
+                  }}
+                />
+                <div className="m-2">
+                  <strong>Categories:</strong> {category.category}
+                </div>
+                <div>
+                  <strong>Description:</strong> {category.description}
+                </div>
+                <div className="m-2">
+                  <strong>Price:</strong> ₹{category.price}
+                </div>
+                <h5 className="card-title text-capitalize">{category.title}</h5>
 
-              <div
-                className="d-flex justify-content-center align-items-center mt-3 mb-1"
-              >
-                <button
-                  className="btn btn-danger"
-                  style={{ width: "180px" }}
+                <div
+                  className="d-flex justify-content-center align-items-center mt-3 mb-1"
                 >
-                  Buy Now
-                </button>
-              </div>
+                  <button
+                    className="btn btn-danger"
+                    style={{ width: "180px" }}
+                  >
+                    Buy Now
+                  </button>
+                </div>
 
+              </div>
             </div>
           </div>
         </div>

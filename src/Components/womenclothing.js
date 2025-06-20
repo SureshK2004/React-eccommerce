@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MainNavbar from "./main";
+
 import { useNavigate } from "react-router-dom";
 
 function Womensclothing() {
@@ -23,7 +23,7 @@ function Womensclothing() {
 
  return (
   <>
-  <MainNavbar/>
+  
     <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh"}}>
       <div className="row m-5 w-100">
         {category.map((data) => (
