@@ -9,6 +9,7 @@ import ProductDetails from "./productdetails";
 import AllProducts from "./allproducts";
 
 
+
 function Routeapp() {
     return (
         <>
@@ -23,6 +24,7 @@ function Routeapp() {
                     
                         <Route path="/products" element={<AllProducts />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
+                    
                     </Route>
                 </Routes>
         </BrowserRouter >
