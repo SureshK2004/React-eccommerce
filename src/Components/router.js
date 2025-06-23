@@ -21,13 +21,13 @@ function Routeapp() {
                         <Route path="jewelery" element={<Jewellery />} />
                         <Route path="men's clothing" element={<Menclothing />} />
                         <Route path="women's clothing" element={<Womensclothing />} />
-                    
+
                         <Route path="/products" element={<AllProducts />} />
-                    <Route path="/product/:id" element={<ProductDetails />} />
-                    
+                        <Route path="/product/:id" element={<ProductDetails />} />
+
                     </Route>
                 </Routes>
-        </BrowserRouter >
+            </BrowserRouter >
         </>
     );
 }

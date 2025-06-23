@@ -39,7 +39,7 @@ function AllProducts() {
   }, [page, allProducts]);
 
   const goToDetails = (id) => {
-    navigate(`/product/${id}`);
+    navigate(`/product/₹{id}`);
   };
 
   const handleEdit = (prod) => {
@@ -56,7 +56,7 @@ function AllProducts() {
 
   const handleSave = () => {
     setLoading(true);
-    fetch(`https://fakestoreapi.com/products/${editId}`, {
+    fetch(`https://fakestoreapi.com/products/₹{editId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editData),
@@ -84,9 +84,9 @@ function AllProducts() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm(`Are you sure you want to delete product ${id}?`)) {
+    if (window.confirm(`Are you sure you want to delete product ₹{id}?`)) {
       setLoading(true);
-      fetch(`https://fakestoreapi.com/products/${id}`, {
+      fetch(`https://fakestoreapi.com/products/₹{id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -95,7 +95,7 @@ function AllProducts() {
           setAllProducts(filteredAllProducts);
           const filteredProducts = products.filter((p) => p.id !== id);
           setProducts(filteredProducts);
-          alert(`Product ${id} deleted successfully!`);
+          alert(`Product ₹{id} deleted successfully!`);
           setLoading(false);
         })
         .catch((error) => {
@@ -171,7 +171,7 @@ function AllProducts() {
                     <td>
                       <button
                         onClick={(e) => {
-                          e.stopPropagation();
+                          e.stopPropagation(); // click panna separate ah eduthu kaamikurathuku
                           handleSave();
                         }}
                         className="btn btn-success btn-sm"
@@ -209,7 +209,7 @@ function AllProducts() {
                     </td>
                     <td>{product.title}</td>
                     <td>{product.category}</td>
-                    <td>${product.price}</td>
+                    <td>₹{product.price}</td>
                     <td>
                       <button
                         className="btn btn-warning btn-sm"
@@ -240,11 +240,11 @@ function AllProducts() {
         </table>
       </div>
 
-      <div className="d-flex justify-content-center mt-3">
+      <div className="d-flex justify-content-center m-5">
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
-          className="btn btn-secondary btn-sm me-2"
+          className="btn btn-primary btn-md me-2"
         >
           Previous
         </button>
@@ -252,7 +252,7 @@ function AllProducts() {
         <button
           disabled={page * limit >= allProducts.length}
           onClick={() => setPage(page + 1)}
-          className="btn btn-secondary btn-sm ms-2"
+          className="btn btn-primary btn-md ms-2"
         >
           Next
         </button>
