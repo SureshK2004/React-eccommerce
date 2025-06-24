@@ -26,7 +26,7 @@ function ProductDetails() {
 
   return (
     <>
-    
+
       <div
         className="d-flex justify-content-center align-items-center section"
         style={{ minHeight: "80vh" }}
@@ -62,6 +62,7 @@ function ProductDetails() {
                   <button
                     className="btn btn-danger"
                     style={{ width: "180px" }}
+                    onClick={() => alert("Feature not available yet - please check back later!")}
                   >
                     Buy Now
                   </button>
