@@ -27,7 +27,7 @@ function Electronics() {
       <div className="row m-5 w-100">
         {category.map((data) => (
           <div className="col-md-3 mb-4" onClick={() => getIdData(data.id)}>
-            <div className="card h-100 text-center p-3 category-card">
+            <div className="card h-100 text-center p-3 category-card" >
               <img
               src={data.image}
               alt={data.title}

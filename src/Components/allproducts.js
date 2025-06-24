@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoMdAdd } from "react-icons/io";
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -116,7 +117,17 @@ function AllProducts() {
 
   return (
     <div className="container mt-5">
-      <h3 className="text-center mb-4">All Products</h3>
+      <div className="row align-items-center m-3">
+        <div className="col">
+          <h3 className="mb-0">
+            All Products
+          </h3>
+        </div>
+        <div className="col-auto">
+          <button className="btn btn-success"><IoMdAdd className="me-2" />
+            Add New</button>
+        </div>
+      </div>
       <div className="table-responsive">
         <table className="table table-striped table-bordered text-center align-middle">
           <thead className="table-dark">
@@ -244,7 +255,7 @@ function AllProducts() {
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
-          className="btn btn-secondary btn-sm me-2"
+          className="btn btn-primary btn-sm me-2"
         >
           Previous
         </button>
@@ -252,7 +263,7 @@ function AllProducts() {
         <button
           disabled={page * limit >= allProducts.length}
           onClick={() => setPage(page + 1)}
-          className="btn btn-secondary btn-sm ms-2"
+          className="btn btn-primary btn-sm ms-2"
         >
           Next
         </button>
