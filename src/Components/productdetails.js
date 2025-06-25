@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import "./card.css";
 
 
 function ProductDetails() {
@@ -34,7 +34,7 @@ function ProductDetails() {
         <div className="container">
           <div className="row m-5 justify-content-center align-items-center ">
             <div className="col-md-5 mb-5">
-              <div className="card w-100 text-center p-3 category-card ">
+              <div className="card w-100 text-center p-3 category-card cards">
                 <img
                   src={category.image}
                   alt={category.title}
