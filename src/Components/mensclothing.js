@@ -18,9 +18,6 @@ function Menclothing() {
     navigate(`/product/${a}`);
   }
 
-  
-
-
  return (
   <>
  

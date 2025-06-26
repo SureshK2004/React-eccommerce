@@ -1,14 +1,14 @@
 .cards {
-  overflow: hidden; /* Apply to parent container */
-  border-radius: 8px; /* Optional: for rounded corners */
+  overflow: hidden; 
+  border-radius: 8px; 
 }
 
 .cards img {
   width: 100%;
   height: auto;
-  transition: transform 0.3s ease; /* Optional: for hover effects */
+  transition: transform 0.3s ease; 
 }
 
 .cards:hover img {
-  transform: scale(1.05); /* Optional: zoom effect on hover */
+  transform: scale(1.05); 
 }

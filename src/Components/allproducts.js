@@ -119,13 +119,16 @@ function AllProducts() {
     <div className="container mt-5">
       <div className="row align-items-center m-3">
         <div className="col">
-          <h3 className="mb-0">
-            All Products
-          </h3>
+          <h3 className="mb-0">All Products</h3>
         </div>
         <div className="col-auto">
-          <button className="btn btn-success"><IoMdAdd className="me-2" />
-            Add New</button>
+          <button
+            className="btn btn-success"
+            onClick={() => navigate('/add-product')}
+          >
+            <IoMdAdd className="me-2" />
+            Add New
+          </button>
         </div>
       </div>
       <div className="table-responsive">

@@ -1,79 +1,80 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "./card.css";
-
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 function ProductDetails() {
-  const [category, setCategory] = useState({});
   const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!id) return;
-
     fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        return res.json();
+      .then(res => res.json())
+      .then(data => {
+        setProduct(data);
+        setLoading(false);
       })
-      .then((data) => setCategory(data))
-      .catch((err) => {
-        console.error("Fetch error:", err);
+      .catch(error => {
+        console.error("Error fetching product:", error);
+        setLoading(false);
       });
   }, [id]);
 
+  if (loading) {
+    return (
+      <div className="text-center my-5">
+        <div className="spinner-border text-primary" role="status" />
+        <p className="mt-2">Loading product details...</p>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return <div className="container mt-5">Product not found</div>;
+  }
 
   return (
-    <>
-
-      <div
-        className="d-flex justify-content-center align-items-center section"
-        style={{ minHeight: "80vh" }}
+    <div className="container mt-5">
+      <button
+        onClick={() => navigate(-1)}
+        className="btn btn-secondary mb-3"
       >
-        <div className="container">
-          <div className="row m-5 justify-content-center align-items-center ">
-            <div className="col-md-5 mb-5">
-              <div className="card w-100 text-center p-3 category-card cards">
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="img-fluid mx-auto"
-                  style={{
-                    maxHeight: "350px",
-                    maxWidth: "200px",
-                    objectFit: "contain",
-                  }}
-                />
-                <div className="m-2">
-                  <strong>Categories:</strong> {category.category}
-                </div>
-                <div>
-                  <strong>Description:</strong> {category.description}
-                </div>
-                <div className="m-2">
-                  <strong>Price:</strong> ₹{category.price}
-                </div>
-                <h5 className="card-title text-capitalize">{category.title}</h5>
+        Back to Products
+      </button>
 
-                <div
-                  className="d-flex justify-content-center align-items-center mt-3 mb-1"
-                >
-                  <button
-                    className="btn btn-danger"
-                    style={{ width: "180px" }}
-                    onClick={() => alert("Feature not available yet - please check back later!")}
-                  >
+      <div className="card m-3">
+        <div className="row g-0">
+          <div className="col-md-4">
+            <img
+              src={product.image}
+              className="img-fluid rounded-start p-4"
+              alt={product.title}
+              style={{ height: "400px", objectFit: "contain" }}
+            />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h2 className="card-title">{product.title}</h2>
+              <p className="card-text">
+                <span className="badge bg-primary">{product.category}</span>
+              </p>
+              <h3 className="text-success">${product.price}</h3>
+              <p className="card-text mt-3">{product.description}</p>
+              <div className="mt-4">
+                <div className="d-flex justify-content-center align-items-center">
+                  <button className="btn btn-warning"  onClick={() => alert("Authentication service is currently unavailable - Please try again later")}>
                     Buy Now
                   </button>
+                   <button className="btn btn-danger m-3"  onClick={() => alert("Authentication service is currently unavailable - Please try again later")}>
+                    Add to Cart 
+                  </button>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

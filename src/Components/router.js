@@ -7,6 +7,7 @@ import Menclothing from "./mensclothing";
 import Womensclothing from "./womenclothing";
 import ProductDetails from "./productdetails";
 import AllProducts from "./allproducts";
+import AddProduct from "./addproducts"
 
 
 
@@ -21,10 +22,9 @@ function Routeapp() {
                         <Route path="jewelery" element={<Jewellery />} />
                         <Route path="men's clothing" element={<Menclothing />} />
                         <Route path="women's clothing" element={<Womensclothing />} />
-
                         <Route path="/products" element={<AllProducts />} />
                         <Route path="/product/:id" element={<ProductDetails />} />
-
+                        <Route path="/add-product" element={<AddProduct />} />
                     </Route>
                 </Routes>
             </BrowserRouter >
