@@ -58,7 +58,7 @@ function ProductDetails() {
               <p className="card-text">
                 <span className="badge bg-primary">{product.category}</span>
               </p>
-              <h3 className="text-success">${product.price}</h3>
+              <h3 className="text-success">₹{product.price}</h3>
               <p className="card-text mt-3">{product.description}</p>
               <div className="mt-4">
                 <div className="d-flex justify-content-center align-items-center">
